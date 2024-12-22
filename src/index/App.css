@@ -1,0 +1,9 @@
+.breadcrumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.breadcrumbs {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}

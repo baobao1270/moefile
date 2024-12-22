@@ -1,0 +1,94 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - ci
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+env:
+  DOCKER_HUB_USERNAME: josephcz
+  PROJECT_NAME: moefile
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-24.04
+    permissions:
+      packages: write
+      contents: write
+      pull-requests: read
+      checks: write
+    env:
+      DOCKER_HUB_USERNAME: josephcz
+      PROJECT_NAME: moefile
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5
+        with:
+          bun-version: '1.1'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+      - name: Install Dependencies
+        run:  bun install
+      - uses: golangci/golangci-lint-action@971e284b6050e8a5849b72094c50ab08da042db8
+        with:
+          version: v1.60
+      - name: Build
+        run:  bun run build
+      - name: Archive HTML
+        run:
+          tar -czf bin/archives/${PROJECT_NAME}-frontend-${COMMIT_SHA}.tar.gz -C dist .
+        env:
+          COMMIT_SHA: ${{ github.sha }}
+      - name: Upload Artifact (Backend)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PROJECT_NAME }}-build-archives-${{ github.sha }}
+          path: bin/archives/*
+      - name: Upload Release Asset
+        if:   startsWith(github.ref, 'refs/tags/')
+        run: |
+          gh release create ${GIT_TAG} bin/archives/*
+        env:
+          GIT_TAG: ${{ github.ref_name }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/setup-buildx-action@6524bf65af31da8d45b59e8c27de4bd072b392f5
+      - uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567
+        with:
+          username: ${{ env.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - uses: docker/build-push-action@48aba3b46d1b1fec4febb7c5d0c644b249a11355
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64,linux/riscv64,linux/386
+          push: true
+          tags: |
+            ${{ env.DOCKER_HUB_USERNAME }}/${{ env.PROJECT_NAME }}:${{ startsWith(github.ref, 'refs/tags/') && 'latest' || 'edge' }}
+            ${{ env.DOCKER_HUB_USERNAME }}/${{ env.PROJECT_NAME }}:${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || github.sha }}
+            ghcr.io/${{ github.repository }}:${{ startsWith(github.ref, 'refs/tags/') && 'latest' || 'dev' }}
+            ghcr.io/${{ github.repository }}:${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || github.sha }}
+      - name: Setup QEMU
+        run:  sudo apt-get update && sudo apt-get install -y qemu-user-static qemu-system-misc binfmt-support
+      - name: Build Docker Image (loong64)
+        uses: docker/build-push-action@48aba3b46d1b1fec4febb7c5d0c644b249a11355
+        with:
+          context: .
+          file: ./Dockerfile.loong64
+          platforms: linux/loong64
+          push: true
+          tags: |
+            ${{ env.DOCKER_HUB_USERNAME }}/${{ env.PROJECT_NAME }}-loong64:${{ startsWith(github.ref, 'refs/tags/') && 'latest' || 'edge' }}
+            ${{ env.DOCKER_HUB_USERNAME }}/${{ env.PROJECT_NAME }}-loong64:${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || github.sha }}

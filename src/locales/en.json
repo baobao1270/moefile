@@ -1,0 +1,30 @@
+{
+  "translation": {
+    "index.filename": "Name",
+    "index.size": "Size",
+    "index.last_modified": "Last Modified",
+    "index.search": "Search",
+    "index.search_file": "Search files...",
+    "index.sort": "Sort",
+    "index.timezone": "Timezone",
+    "index.timezone_client": "Client",
+    "index.timezone_server": "Server",
+    "index.timezone_utc": "UTC",
+    "player.404.title": "Sorry, this video is not available.",
+    "player.404.description": "This video might be DMCA takendown, or you misspelled the URL.",
+    "player.404.back": "Back to Homepage",
+    "player.title": "Video Player",
+    "player.view_folder": "Folder",
+    "player.download_video": "Download",
+    "player.autoplay_warn.title": "Can't Autoplay",
+    "player.autoplay_warn.description": "Your browser has restricted autoplaying videos. Please click the play button to start the video.",
+    "player.settings": "Settings",
+    "player.danmuku": "Danmaku",
+    "player.loop": "Loop",
+    "player.screenshot": "Screenshot",
+    "player.airplay": "AirPlay",
+    "player.pip": "PIP",
+    "player.subtitles": "CC",
+    "lang": "English"
+  }
+}
