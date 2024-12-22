@@ -1,0 +1,3 @@
+#!/bin/bash
+set -e
+echo $(git describe --tags 2>/dev/null || echo "git/$(git rev-parse --short HEAD 2>/dev/null || echo 'unknown')")

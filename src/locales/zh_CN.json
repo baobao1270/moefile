@@ -1,0 +1,30 @@
+{
+  "translation": {
+    "index.filename": "文件名",
+    "index.size": "大小",
+    "index.last_modified": "修改时间",
+    "index.search": "搜索",
+    "index.search_file": "搜索文件名...",
+    "index.sort": "排序",
+    "index.timezone": "时区",
+    "index.timezone_client": "客户端",
+    "index.timezone_server": "服务器",
+    "index.timezone_utc": "协调世界时",
+    "player.404.title": "非常抱歉，本视频由于以下原因无法播放",
+    "player.404.description": " · 视频链接失效<br> · 视频内容不和谐<br> · UP 主自主删除<br> · 侵犯他人著作权",
+    "player.404.back": "返回首页",
+    "player.view_folder": "查看目录",
+    "player.download_video": "下载视频",
+    "player.title": "视频播放器",
+    "player.autoplay_warn.title": "无法自动播放",
+    "player.autoplay_warn.description": "您的浏览器限制了自动播放视频。请点击播放按钮开始播放视频。",
+    "player.settings": "播放设置",
+    "player.danmuku": "弹幕开关",
+    "player.loop": "循环播放",
+    "player.screenshot": "视频截图",
+    "player.airplay": "AirPlay",
+    "player.pip": "画中画",
+    "player.subtitles": "字幕",
+    "lang": "简体中文 (Chinese Simplified)"
+  }
+}

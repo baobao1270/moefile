@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ -z "$SCRIPTS_DIR" ]; then
+  echo "SCRIPTS_DIR is not set"
+  exit 1
+fi
+
+PROJECT_DIR=$(dirname $SCRIPTS_DIR)
+SOURCE_DIR="$PROJECT_DIR/src"
+PUBLIC_DIR="$PROJECT_DIR/public"
+DIST_DIR="$PROJECT_DIR/dist"
+CMD_DIR="$PROJECT_DIR/cmd"
+BIN_DIR="$PROJECT_DIR/bin"
+GO_MAIN_DIR="$CMD_DIR/moefile"
+
+echo "PROJECT_DIR:  $PROJECT_DIR"
+echo "SOURCE_DIR:   $SOURCE_DIR"
+echo "PUBLIC_DIR:   $PUBLIC_DIR"
+echo "DIST_DIR:     $DIST_DIR"
+echo "CMD_DIR:      $CMD_DIR"
+echo "BIN_DIR:      $BIN_DIR"
+echo "GO_MAIN_DIR:  $GO_MAIN_DIR"

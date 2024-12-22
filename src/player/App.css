@@ -1,0 +1,50 @@
+.desktop {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  max-width: 1280px;
+}
+
+.desktop .bottom-controls {
+  margin-right: 0;
+}
+
+.desktop .mobile-only-controls {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .desktop {
+    margin-top: 40px;
+    max-width: 760px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .desktop {
+    margin-top: 60px;
+    max-width: 840px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .desktop {
+    margin-top: 80px;
+    max-width: 1024px;
+  }
+}
+
+.mobile {
+  margin: 0;
+  padding: 0;
+}
+
+.mobile .player-banner-desktop {
+  display: none;
+}
+
+.mobile > * {
+  margin: 0;
+  padding: 0;
+  min-height: calc(100vh - 56px);
+}

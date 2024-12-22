@@ -1,0 +1,30 @@
+{
+  "translation": {
+    "index.filename": "檔案名",
+    "index.size": "大小",
+    "index.last_modified": "修改時間",
+    "index.search": "搜尋",
+    "index.search_file": "搜尋檔案名...",
+    "index.sort": "排序",
+    "index.timezone": "時區",
+    "index.timezone_client": "客戶端",
+    "index.timezone_server": "伺服器",
+    "index.timezone_utc": "協調世界時",
+    "player.404.title": "非常抱歉，本影片由於以下原因無法播放",
+    "player.404.description": "此影片可能因版權問題被下架，或者您輸入的網址有誤。",
+    "player.404.back": "首頁",
+    "player.view_folder": "目錄",
+    "player.download_video": "下載",
+    "player.title": "Player",
+    "player.autoplay_warn.title": "無法自動播放",
+    "player.autoplay_warn.description": "您的瀏覽器限制了自動播放影片。請點擊播放按鈕開始播放影片。",
+    "player.settings": "播放設定",
+    "player.danmuku": "彈幕開關",
+    "player.loop": "循環播放",
+    "player.screenshot": "截圖",
+    "player.airplay": "AirPlay",
+    "player.pip": "畫中畫",
+    "player.subtitles": "字幕",
+    "lang": "繁體中文 (Chinese Traditional)"
+  }
+}
