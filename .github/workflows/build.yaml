@@ -78,7 +78,7 @@ jobs:
           tags: |
             ${{ env.DOCKER_HUB_USERNAME }}/${{ env.PROJECT_NAME }}:${{ startsWith(github.ref, 'refs/tags/') && 'latest' || 'edge' }}
             ${{ env.DOCKER_HUB_USERNAME }}/${{ env.PROJECT_NAME }}:${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || github.sha }}
-            ghcr.io/${{ github.repository }}:${{ startsWith(github.ref, 'refs/tags/') && 'latest' || 'dev' }}
+            ghcr.io/${{ github.repository }}:${{ startsWith(github.ref, 'refs/tags/') && 'latest' || 'edge' }}
             ghcr.io/${{ github.repository }}:${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || github.sha }}
       - name: Setup QEMU
         run:  sudo apt-get update && sudo apt-get install -y qemu-user-static qemu-system-misc binfmt-support
