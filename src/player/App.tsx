@@ -139,6 +139,8 @@ function App() {
   }
 
   useEffect(() => {
+    document.title = `${APP_NAME} - ${t('player.title')}`
+
     const url = new URL(window.location.href)
     if (!url.search.startsWith(PLAYER_PREFIX)) {
       setIs404(true)

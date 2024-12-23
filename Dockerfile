@@ -19,6 +19,5 @@ ENV       APP_NAME=${APP_NAME} \
           ORIGINS=* \
           PROXIES=127.0.0.1 \
           ROOT=/data \
-          SERVER=${APP_NAME} \
           XMLTAB=true
 CMD       ["/app/container-init.sh"]
